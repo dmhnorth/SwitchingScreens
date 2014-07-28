@@ -69,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
             //check the result was OK
             if(resultCode == RESULT_OK) {
             //do something with the data now
-                
+
                 //grabs the user's name message
                 TextView usersNameMessage = (TextView)
                         findViewById(R.id.users_name_message);

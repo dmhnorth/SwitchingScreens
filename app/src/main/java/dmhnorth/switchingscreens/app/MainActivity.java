@@ -1,9 +1,12 @@
 package dmhnorth.switchingscreens.app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -35,4 +38,33 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onGetNameClick(View view) {
+
+        Intent getNameScreenIntent = new Intent(this,
+                SecondScreen.class);
+
+
+        //required to reference data that returns
+        final int result = 1;
+
+        //for passing extra information into the next activity we call
+        getNameScreenIntent.putExtra("callingActivity","MainActivity");
+
+        //use startActivity(Intent) if no results are expected to come back
+        startActivityForResult(getNameScreenIntent, result);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        TextView usersNameMessage = (TextView)
+                findViewById(R.id.users_name_message);
+
+        String nameSentBack = data.getStringExtra("UsersName");
+
+        usersNameMessage.append(" " + nameSentBack);
+
+    }
 }

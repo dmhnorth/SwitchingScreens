@@ -25,6 +25,12 @@ public class SecondScreen extends Activity {
         String previousActivity = activityThatCalled.getExtras().getString("callingActivityName");
 
 
+        //extract the example custom object data and display it
+        Person bob = (Person) activityThatCalled.getExtras().getSerializable("PersonBob");
+
+        TextView customObject = (TextView) findViewById(R.id.custom_object);
+        customObject.setText(bob.toString());
+
 
         //Find the TextView we want to display our name on
         TextView callingActivityMessage = (TextView) findViewById(R.id.calling_activity_info_text_view);

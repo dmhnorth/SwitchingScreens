@@ -54,6 +54,12 @@ public class MainActivity extends ActionBarActivity {
         //'anything' can be sent using this key value pair structure.
         getNameScreenIntent.putExtra("callingActivityName","'the main activity!'");
 
+
+        //put in a custom object, for example sake only.
+        Person bob = new Person("Bob");
+        getNameScreenIntent.putExtra("PersonBob", bob);
+
+
         //run the intent/new activity!
         //use startActivity(Intent) if no results are expected to come back
         startActivityForResult(getNameScreenIntent, requestCode1);

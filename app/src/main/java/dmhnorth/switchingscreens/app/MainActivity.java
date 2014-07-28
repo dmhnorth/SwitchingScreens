@@ -38,18 +38,21 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //This is the function for the button the user initially clicks to open the second screen
     public void onGetNameClick(View view) {
 
+        //create a new Intent(an intent to do something within Android
         Intent getNameScreenIntent = new Intent(this,
                 SecondScreen.class);
-
 
         //required to reference data that returns
         final int result = 1;
 
         //for passing extra information into the next activity we use a key-value pair
-        getNameScreenIntent.putExtra("callingActivity","'the main activity!'");
+        //'anything' can be sent using this key value pair structure.
+        getNameScreenIntent.putExtra("callingActivityName","'the main activity!'");
 
+        //run the intent/new activity!
         //use startActivity(Intent) if no results are expected to come back
         startActivityForResult(getNameScreenIntent, result);
 
@@ -59,13 +62,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//TODO explain how this works
-
+        //grabs the user's name message
         TextView usersNameMessage = (TextView)
                 findViewById(R.id.users_name_message);
 
+        //get the some of the (key-value) pair data that was created in the previous result
         String nameSentBack = data.getStringExtra("UsersName");
 
+        //append this to the TextEdit within the first activity screen
         usersNameMessage.append(" " + nameSentBack);
 
     }

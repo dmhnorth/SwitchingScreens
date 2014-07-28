@@ -22,7 +22,7 @@ public class SecondScreen extends Activity {
         Intent activityThatCalled = getIntent();
 
         //get the result of the key value pair "CallingActivity"
-        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
+        String previousActivity = activityThatCalled.getExtras().getString("callingActivityName");
 
 
 
@@ -36,17 +36,23 @@ public class SecondScreen extends Activity {
 
     public void onSendUsersName(View view) {
 
-//TODO fill details out of how this works
-        EditText usersNameET = (EditText) findViewById(R.id.users_name_edit_text);
+        //find the EditText the user enters the name into
+        EditText usersNameEditText = (EditText) findViewById(R.id.users_name_edit_text);
 
-        String usersName = String.valueOf(usersNameET.getText());
+        //get the userName that has been typed in
+        String usersName = String.valueOf(usersNameEditText.getText());
 
+        //create a new intent to go back to the previous activity
         Intent goingBack = new Intent();
 
+        //put an extra (key-value) in with the intent to carry back
         goingBack.putExtra("UsersName", usersName);
 
+        //result set by the activity executing. RESULT_CANCELLED is an error handling feature if
+        //this activity were to fail for any reason
         setResult(RESULT_OK, goingBack);
 
+        //close the activity
         finish();
 
     }

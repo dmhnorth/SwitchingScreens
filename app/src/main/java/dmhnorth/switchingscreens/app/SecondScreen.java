@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class SecondScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         //call layout
@@ -22,10 +21,15 @@ public class SecondScreen extends Activity {
         //collect Intent data
         Intent activityThatCalled = getIntent();
 
+        //get the result of the key value pair "CallingActivity"
         String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
+
+
+        //Find the TextView we want to display our name on
         TextView callingActivityMessage = (TextView) findViewById(R.id.calling_activity_info_text_view);
 
+        //Set the TextView with the data you have passed across
         callingActivityMessage.append(" " + previousActivity);
 
     }

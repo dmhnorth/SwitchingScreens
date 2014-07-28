@@ -47,8 +47,8 @@ public class MainActivity extends ActionBarActivity {
         //required to reference data that returns
         final int result = 1;
 
-        //for passing extra information into the next activity we call
-        getNameScreenIntent.putExtra("callingActivity","MainActivity");
+        //for passing extra information into the next activity we use a key-value pair
+        getNameScreenIntent.putExtra("callingActivity","'the main activity!'");
 
         //use startActivity(Intent) if no results are expected to come back
         startActivityForResult(getNameScreenIntent, result);
@@ -58,6 +58,8 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+//TODO explain how this works
 
         TextView usersNameMessage = (TextView)
                 findViewById(R.id.users_name_message);
